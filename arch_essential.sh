@@ -74,6 +74,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 # curl second script
 curl https://gitlab.com/fotscode/arch-inst/-/raw/main/arch_essential_2.sh > /mnt/arch_essential_2.sh
+chmod +x /mnt/arch_essential_2.sh
 
 # finishing
 echo "Continue by executing second script"

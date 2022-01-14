@@ -73,13 +73,13 @@ pacstrap /mnt base base-devel linux linux-headers linux-firmware vim dhcpcd netw
 genfstab -U /mnt >> /mnt/etc/fstab
 
 # curl second script
-# curl https://gitlab.com/fotscode/arch_install/
-
-# arch-chroot
-arch-chroot /mnt
+curl https://gitlab.com/fotscode/arch-inst/-/raw/main/arch_essential_2.sh > /mnt/arch_essential_2.sh
 
 # finishing
 echo "Continue by executing second script"
-echo "$(clrg "./arch_essential2.sh")"
+echo "$(clrg "./arch_essential_2.sh")"
+
+# arch-chroot
+arch-chroot /mnt
 
 exit $E_SUCC

@@ -26,7 +26,7 @@ read swap_size
 if ! [[ $swap_size =~ ^[0-9]+[MG]B$ ]]; then
         swap_size="4GB"
 fi
-[[ -f /swapfile ]] && swapoff /swapfile 2>/dev/null || rm /swapfile
+[[ -f /swapfile ]] && swapoff /swapfile 2>/dev/null || rm /swapfile 2> /dev/null
 fallocate -l "$swap_size" /swapfile
 chmod 600 /swapfile
 mkswap /swapfile

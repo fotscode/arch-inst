@@ -50,6 +50,7 @@ echo -en "Everything ok? [Y/n]: "
 read ok
 [[ $ok =~ ^n+$ ]] && exit $E_NCON
 ln -sf "/usr/share/zoneinfo/$timezone" /etc/localtime
+timedatectl set-ntp true
 hwclock --systohc
 
 # Setting language locale
@@ -74,8 +75,10 @@ read ok
 mv /etc/locale.conf.bak /etc/locale.conf
 
 # Setting hostname
+host_default="arch"
 echo -en "Insert your personal hostname. Default: $(clrg "arch"): "
 read host_name
+[[ $host_name = "" ]] && host_name=$host_default
 echo "$host_name" > /etc/hostname
 echo -e "\n127.0.0.1 localhost\n::1 localhost\n127.0.1.1 $host_name" >> /etc/hosts
 
@@ -97,3 +100,4 @@ echo -e "$(clrg "Last steps!")"
 echo -e "type $(clrg "exit")"
 echo -e "then $(clrg "umount -a")"
 echo -e "and after that $(clrg "reboot")"
+echo -e "$(clrg "Optional:") arch_extra.sh for extra packages"

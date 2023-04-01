@@ -1,0 +1,112 @@
+
+git configs:
+
+git config --global user.name "CHANGEME"
+git config --global user.email "CHANGEME@CHANGEME.com"
+
+--------------------------------------
+
+github ssh key:
+
+ssh-keygen -t rsa -b 4096
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+cat ~/.ssh/id_rsa.pub
+add content to github profile settings
+
+--------------------------------------
+
+git clone configs and important folders
+
+--------------------------------------
+
+link .xprofile
+link .zshrc
+create $HOME/.local/bin folder
+link scripts to $HOME/.local/bin
+
+--------------------------------------
+
+install nativefier:
+npm install -g nativefier
+
+--------------------------------------
+
+install google calendar with nativefier:
+
+nativefier https://calendar.google.com/ --user-agent 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0' --name "Google Calendar" --internal-urls ".*accounts.google.com.*" --inject dark_mode.css --darwin-dark-mode-support $HOME/.local/share/
+
+dark_mode.css:
+@media (prefers-color-scheme: dark) {
+    html {
+        filter: invert(100%);
+    }
+
+    html img {
+        filter: invert(100%);
+    }
+}
+
+download icon calendar_1_2x.png from https://calendar.google.com
+
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=false
+Exec=$HOME/.local/share/GoogleCalendar-linux-x64/GoogleCalendar
+Name=Google Calendar
+Icon=$HOME/.local/share/GoogleCalendar-linux-x64/calendar_1_2x.png <--- change this to your path
+
+--------------------------------------
+
+setup browser extensions:
+600% sound volume
+dark reader 
+tampermonkey
+vimium
+limit
+ublock origin
+picture in picture
+return youtube dislikes
+steam inventory helper
+
+--------------------------------------
+
+gtk-themes:
+
+example: white-sur theme
+example: reversal-dark icons
+example: volantes-cursors
+
+--------------------------------------
+
+setup gdrive
+https://github.com/BugCode1/gdrive/releases/tag/2.1.2
+
+--------------------------------------
+
+set copilot in neovim
+
+--------------------------------------
+
+set virtual machines
+
+--------------------------------------
+
+set fstab for mounting extra drives
+
+--------------------------------------
+
+if you want to add grub entrys
+edit /etc/grub.d/40_custom and add:
+menuentry "Windows 10" --class windows --class os {
+    insmod ntfs
+    search --no-floppy --set=root --fs-uuid CHANGE-ME-IM-A-EFI-BOOT-UUID
+    chainloader (${root})/EFI/Microsoft/Boot/bootmgfw.efi
+}
+
+to check your efi boot uuid:
+sudo fdisk -l
+find type EFI System
+sudo blkid /dev/sdXn

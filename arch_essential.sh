@@ -19,8 +19,10 @@ clrr(){
 err(){
 	echo -e "$(clrr "ERROR:")"
 }
-# Start
-timedatectl set-ntp true
+
+# Pacman keyrings
+pacman-key --init
+pacman-key --populate archlinux
 
 # Disks
 echo -e "-----------------   $(clrg "UEFI DISK SETUP")   -----------------"

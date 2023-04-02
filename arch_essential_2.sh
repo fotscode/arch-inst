@@ -50,7 +50,6 @@ echo -en "Everything ok? [Y/n]: "
 read ok
 [[ $ok =~ ^n+$ ]] && exit $E_NCON
 ln -sf "/usr/share/zoneinfo/$timezone" /etc/localtime
-timedatectl set-ntp true
 hwclock --systohc
 
 # Setting language locale

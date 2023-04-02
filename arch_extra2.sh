@@ -16,10 +16,10 @@ err(){
 echo "Defaults in green"
 
 
-packages_useful = "rofi playerctl xbindkeys nitrogen flameshot alsa-utils btop neofetch xorg-xset tree perl-image-exiftool pavucontrol onboard redshift sleek xorg-xcursorgen ripgrep dunst fzf fd bat xdotool xorg-xwininfo exa pamixer unzip unrar man-db lxappearance xclip"
+packages_useful = "rofi playerctl xbindkeys nitrogen flameshot alsa-utils btop neofetch xorg-xset tree perl-image-exiftool pavucontrol onboard redshift sleek xorg-xcursorgen ripgrep dunst fzf fd bat xdotool xorg-xwininfo exa pamixer unzip unrar man-db lxappearance xclip wmctrl"
 packages_media = "spotify-launcher thunderbird stremio noisetorch gimp qbittorrent sxiv rnote yt-dlp inkscape"
 packages_flashing = "balena-etcher woeusb"
-packages_development = "jdk-openjdk android-studio npm nodejs"
+packages_development = "jdk-openjdk android-studio npm nodejs libwnck3 python-pip tk"
 packages_fonts = "ttf-roboto siji-git ttf-sourcecodepro-nerd ttf-iosevka-nerd ttf-hack-nerd ttf-font-awesome ttf-font-awesome-4 noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra"
 
 echo "Useful packages: $packages_useful"

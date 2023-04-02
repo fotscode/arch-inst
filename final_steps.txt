@@ -1,4 +1,16 @@
 
+git clone configs and important folders
+
+--------------------------------------
+
+link .xprofile
+link .zshrc
+create $HOME/.local/bin folder
+link scripts to $HOME/.local/bin
+rofi themes script
+
+--------------------------------------
+
 git configs:
 
 git config --global user.name "CHANGEME"
@@ -16,14 +28,8 @@ add content to github profile settings
 
 --------------------------------------
 
-git clone configs and important folders
-
---------------------------------------
-
-link .xprofile
-link .zshrc
-create $HOME/.local/bin folder
-link scripts to $HOME/.local/bin
+i3lock-fancy-dualmonitors-git
+xdpyinfo
 
 --------------------------------------
 

@@ -16,21 +16,11 @@ err(){
 }
 echo "Defaults in green"
 
-echo -en "Create new user? ["$(clrg "Y")"/n]: "
+echo -en "Username [leave empty if non existing]: "
 read ok
-[[ $ok = "" ]] && ok="y"
-if [[ $ok =~ ^(y|Y).*$ ]]; then     
-    user_default="arch"
-    echo -en "Username. Default: $(clrg "arch"): "
-    read user_name
-    [[ $user_name = "" ]] && user_name=$user_default
-    useradd -m -G wheel "$user_name"
-    passwd "$user_name"
-    su -c "$user_name"
-    user_created=1
-else
-    user_created=0
-fi
+user_created=1
+[[ $ok = "" ]] && user_created=0
+user_name=$ok
 
 
 echo -en "Install base-devel, devtools, xrandr? [$(clrg "Y")/n]: "
@@ -96,22 +86,22 @@ echo -en "Download brave/google-chrome/firefox [$(clrg "0")/1/2]: "
 read ok
 [[ $ok = "" ]] && ok="0"
 if [[ $ok =~ ^0$ ]]; then     
-    sudo paru -S brave-bin
+    paru -S brave-bin
 elif [[ $ok =~ ^1$ ]]; then
-    sudo paru -S google-chrome
+    paru -S google-chrome
 else
-    sudo paru -S firefox
+    paru -S firefox
 fi
 
 echo -en "Download kitty/alacritty/konsole [$(clrg "0")/1/2]: "
 read ok
 [[ $ok = "" ]] && ok="0"
 if [[ $ok =~ ^0$ ]]; then     
-    sudo paru -S kitty
+    paru -S kitty
 elif [[ $ok =~ ^1$ ]]; then
-    sudo paru -S alacritty
+    paru -S alacritty
 else
-    sudo paru -S konsole
+    paru -S konsole
 fi
 
 echo -en "Download zsh [$(clrg "Y")/n]: "
@@ -126,38 +116,38 @@ echo -en "Download neovim/vscode [$(clrg "0")/1]: "
 read ok
 [[ $ok = "" ]] && ok="0"
 if [[ $ok =~ ^0$ ]]; then     
-    sudo paru -S neovim
+    paru -S neovim
 elif [[ $ok =~ ^1$ ]]; then
-    sudo paru -S visual-studio-code-bin
+    paru -S visual-studio-code-bin
 fi
 
 echo -en "Download sioyek/zathura [$(clrg "0")/1]: "
 read ok
 [[ $ok = "" ]] && ok="0"
 if [[ $ok =~ ^0$ ]]; then     
-    sudo paru -S sioyek
+    paru -S sioyek
 elif [[ $ok =~ ^1$ ]]; then
-    sudo paru -S zathura
+    paru -S zathura
 fi
 
 echo -en "Download discord/teams/zoom [$(clrg "0")/1/2]: "
 read ok
 [[ $ok = "" ]] && ok="0"
 if [[ $ok =~ ^0$ ]]; then     
-    sudo paru -S discord
+    paru -S discord
 elif [[ $ok =~ ^1$ ]]; then
-    sudo paru -S teams
+    paru -S teams
 else
-    sudo paru -S zoom
+    paru -S zoom
 fi
 
 echo -en "Download mpv/vlc [$(clrg "0")/1]: "
 read ok
 [[ $ok = "" ]] && ok="0"
 if [[ $ok =~ ^0$ ]]; then     
-    sudo paru -S mpv
+    paru -S mpv
 elif [[ $ok =~ ^1$ ]]; then
-    sudo paru -S vlc
+    paru -S vlc
 fi
 
 echo "$(clrr "WARNING:") execute visudo and uncomment \"%wheel ALL=(ALL:ALL) ALL\" almost at the end of the file"

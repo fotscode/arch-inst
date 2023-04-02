@@ -28,7 +28,7 @@ echo -en "Install useful packages? [$(clrg "Y")/n]: "
 read ok
 [[ $ok = "" ]] && ok="y"
 if [[ $ok =~ ^(y|Y).*$ ]]; then     
-    sudo paru -S $packages_useful
+    paru -S $packages_useful
 fi
 
 echo "Media packages: $packages_media"
@@ -36,7 +36,7 @@ echo -en "Install media packages? [$(clrg "Y")/n]: "
 read ok
 [[ $ok = "" ]] && ok="y"
 if [[ $ok =~ ^(y|Y).*$ ]]; then     
-    sudo paru -S $packages_media
+    paru -S $packages_media
 fi
 
 echo "Flashing packages: $packages_flashing"
@@ -44,7 +44,7 @@ echo -en "Install flashing packages? [$(clrg "Y")/n]: "
 read ok
 [[ $ok = "" ]] && ok="y"
 if [[ $ok =~ ^(y|Y).*$ ]]; then     
-    sudo paru -S $packages_flashing
+    paru -S $packages_flashing
 fi
 
 echo "Development packages: $packages_development"
@@ -52,7 +52,7 @@ echo -en "Install development packages? [$(clrg "Y")/n]: "
 read ok
 [[ $ok = "" ]] && ok="y"
 if [[ $ok =~ ^(y|Y).*$ ]]; then     
-    sudo paru -S $packages_development
+    paru -S $packages_development
 fi
 
 echo "Fonts packages: $packages_fonts"
@@ -60,5 +60,5 @@ echo -en "Install fonts packages? [$(clrg "Y")/n]: "
 read ok
 [[ $ok = "" ]] && ok="y"
 if [[ $ok =~ ^(y|Y).*$ ]]; then     
-    sudo paru -S $packages_fonts
+    paru -S $packages_fonts
 fi

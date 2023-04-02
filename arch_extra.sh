@@ -1,3 +1,4 @@
+#!/bin/bash
 # Variables
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -22,17 +23,17 @@ if [[ $ok =~ ^(y|Y).*$ ]]; then
     user_default="arch"
     echo -en "Username. Default: $(clrg "arch"): "
     read user_name
-    [[ $user_name = "" ]] && user_name=$host_default
-    useradd -m -G wheel $user_name
-    passwd $user_name
-    su $user_name
+    [[ $user_name = "" ]] && user_name=$user_default
+    useradd -m -G wheel "$user_name"
+    passwd "$user_name"
+    su -c "$user_name"
     user_created=1
 else
     user_created=0
 fi
 
 
-echo -en "Install base-devel, devtools, xrandr? ["$(clrg "Y")"/n]: "
+echo -en "Install base-devel, devtools, xrandr? [$(clrg "Y")/n]: "
 read ok
 [[ $ok = "" ]] && ok="y"
 if [[ $ok =~ ^(y|Y).*$ ]]; then     
@@ -42,7 +43,7 @@ else
     base_devel=0
 fi
 
-echo -en "Download paru ["$(clrg "Y")"/n]: "
+echo -en "Download paru [$(clrg "Y")/n]: "
 read ok
 [[ $ok = "" ]] && ok="y"
 if [[ $ok =~ ^(y|Y).*$ && $base_devel -eq 1 ]]; then
@@ -54,7 +55,7 @@ else
     paru=0
 fi
 
-echo -en "Download drivers amd/nvidia ["$(clrg "0")"/1]: "
+echo -en "Download drivers amd/nvidia [$(clrg "0")/1]: "
 read ok
 [[ $ok = "" ]] && ok="0"
 if [[ $ok =~ ^0$ ]]; then     
@@ -63,7 +64,7 @@ else
     sudo pacman -S nvidia nvidia-utils nvidia-settings
 fi
 
-echo -en "Download WM/Desktop i3/gnome ["$(clrg "0")"/1]: "
+echo -en "Download WM/Desktop i3/gnome [$(clrg "0")/1]: "
 read ok
 [[ $ok = "" ]] && ok="0"
 if [[ $ok =~ ^0$ ]]; then     
@@ -72,14 +73,14 @@ else
     sudo pacman -S gnome gnome-extra
 fi
 
-echo -en "Download polybar ["$(clrg "Y")"/n]: "
+echo -en "Download polybar [$(clrg "Y")/n]: "
 read ok
 [[ $ok = "" ]] && ok="y"
 if [[ $ok =~ ^(y|Y).*$ ]]; then
     sudo pacman -S polybar
 fi
 
-echo -en "Download gdm/lightdm ["$(clrg "0")"/1]: "
+echo -en "Download gdm/lightdm [$(clrg "0")/1]: "
 read ok
 [[ $ok = "" ]] && ok="0"
 if [[ $ok =~ ^0$ ]]; then     
@@ -91,7 +92,7 @@ else
     systemctl enable lightdm
 fi
 
-echo -en "Download brave/google-chrome/firefox ["$(clrg "0")"/1/2]: "
+echo -en "Download brave/google-chrome/firefox [$(clrg "0")/1/2]: "
 read ok
 [[ $ok = "" ]] && ok="0"
 if [[ $ok =~ ^0$ ]]; then     
@@ -102,7 +103,7 @@ else
     sudo paru -S firefox
 fi
 
-echo -en "Download kitty/alacritty/konsole ["$(clrg "0")"/1/2]: "
+echo -en "Download kitty/alacritty/konsole [$(clrg "0")/1/2]: "
 read ok
 [[ $ok = "" ]] && ok="0"
 if [[ $ok =~ ^0$ ]]; then     
@@ -113,7 +114,7 @@ else
     sudo paru -S konsole
 fi
 
-echo -en "Download zsh ["$(clrg "Y")"/n]: "
+echo -en "Download zsh [$(clrg "Y")/n]: "
 read ok
 [[ $ok = "" ]] && ok="y"
 if [[ $ok =~ ^(y|Y).*$ ]]; then
@@ -121,7 +122,7 @@ if [[ $ok =~ ^(y|Y).*$ ]]; then
     [[ $user_created -eq 1 ]] && echo "Executing $(clrg "chsh -s /bin/zsh $user_name")" && chsh -s /bin/zsh $user_name
 fi
 
-echo -en "Download neovim/vscode ["$(clrg "0")"/1]: "
+echo -en "Download neovim/vscode [$(clrg "0")/1]: "
 read ok
 [[ $ok = "" ]] && ok="0"
 if [[ $ok =~ ^0$ ]]; then     
@@ -130,7 +131,7 @@ elif [[ $ok =~ ^1$ ]]; then
     sudo paru -S visual-studio-code-bin
 fi
 
-echo -en "Download sioyek/zathura ["$(clrg "0")"/1]: "
+echo -en "Download sioyek/zathura [$(clrg "0")/1]: "
 read ok
 [[ $ok = "" ]] && ok="0"
 if [[ $ok =~ ^0$ ]]; then     
@@ -139,7 +140,7 @@ elif [[ $ok =~ ^1$ ]]; then
     sudo paru -S zathura
 fi
 
-echo -en "Download discord/teams/zoom ["$(clrg "0")"/1/2]: "
+echo -en "Download discord/teams/zoom [$(clrg "0")/1/2]: "
 read ok
 [[ $ok = "" ]] && ok="0"
 if [[ $ok =~ ^0$ ]]; then     
@@ -150,7 +151,7 @@ else
     sudo paru -S zoom
 fi
 
-echo -en "Download mpv/vlc ["$(clrg "0")"/1]: "
+echo -en "Download mpv/vlc [$(clrg "0")/1]: "
 read ok
 [[ $ok = "" ]] && ok="0"
 if [[ $ok =~ ^0$ ]]; then     

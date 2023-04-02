@@ -91,6 +91,11 @@ set copilot in neovim
 --------------------------------------
 
 set virtual machines
+sudo pacman -S qemu-full virt-manager bridge-utils
+sudo usermod -aG libvirt USUARIO
+sudo usermod -aG kvm USUARIO
+sudo pacman -S dnsmasq
+sudo virsh net-start default
 
 --------------------------------------
 

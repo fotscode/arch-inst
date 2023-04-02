@@ -1,3 +1,4 @@
+#!/bin/bash
 # Variables
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -16,48 +17,48 @@ err(){
 echo "Defaults in green"
 
 
-packages_useful = "rofi playerctl xbindkeys nitrogen flameshot alsa-utils btop neofetch xorg-xset tree perl-image-exiftool pavucontrol onboard redshift sleek xorg-xcursorgen ripgrep dunst fzf fd bat xdotool xorg-xwininfo exa pamixer unzip unrar man-db lxappearance xclip wmctrl"
-packages_media = "spotify-launcher thunderbird stremio noisetorch gimp qbittorrent sxiv rnote yt-dlp inkscape"
-packages_flashing = "balena-etcher woeusb"
-packages_development = "jdk-openjdk android-studio npm nodejs libwnck3 python-pip tk"
-packages_fonts = "ttf-roboto siji-git ttf-sourcecodepro-nerd ttf-iosevka-nerd ttf-hack-nerd ttf-font-awesome ttf-font-awesome-4 noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra"
+packages_useful="rofi playerctl xbindkeys nitrogen flameshot alsa-utils btop neofetch xorg-xset tree perl-image-exiftool pavucontrol onboard redshift sleek xorg-xcursorgen ripgrep dunst fzf fd bat xdotool xorg-xwininfo exa pamixer unzip unrar man-db lxappearance xclip wmctrl gdu"
+packages_media="spotify-launcher thunderbird stremio noisetorch gimp qbittorrent sxiv rnote yt-dlp inkscape"
+packages_flashing="balena-etcher woeusb"
+packages_development="jdk-openjdk android-studio npm nodejs libwnck3 python-pip tk"
+packages_fonts="ttf-roboto siji-git ttf-sourcecodepro-nerd ttf-iosevka-nerd ttf-hack-nerd ttf-font-awesome ttf-font-awesome-4 noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra"
 
 echo "Useful packages: $packages_useful"
-echo -en "Install useful packages? ["$(clrg "Y")"/n]: "
+echo -en "Install useful packages? [$(clrg "Y")/n]: "
 read ok
 [[ $ok = "" ]] && ok="y"
 if [[ $ok =~ ^(y|Y).*$ ]]; then     
-    sudo paru -S $packages_useful
+    sudo paru -S "$packages_useful"
 fi
 
 echo "Media packages: $packages_media"
-echo -en "Install media packages? ["$(clrg "Y")"/n]: "
+echo -en "Install media packages? [$(clrg "Y")/n]: "
 read ok
 [[ $ok = "" ]] && ok="y"
 if [[ $ok =~ ^(y|Y).*$ ]]; then     
-    sudo paru -S $media_packages
+    sudo paru -S "$packages_media"
 fi
 
 echo "Flashing packages: $packages_flashing"
-echo -en "Install flashing packages? ["$(clrg "Y")"/n]: "
+echo -en "Install flashing packages? [$(clrg "Y")/n]: "
 read ok
 [[ $ok = "" ]] && ok="y"
 if [[ $ok =~ ^(y|Y).*$ ]]; then     
-    sudo paru -S $packages_flashing
+    sudo paru -S "$packages_flashing"
 fi
 
 echo "Development packages: $packages_development"
-echo -en "Install development packages? ["$(clrg "Y")"/n]: "
+echo -en "Install development packages? [$(clrg "Y")/n]: "
 read ok
 [[ $ok = "" ]] && ok="y"
 if [[ $ok =~ ^(y|Y).*$ ]]; then     
-    sudo paru -S $packages_development
+    sudo paru -S "$packages_development"
 fi
 
 echo "Fonts packages: $packages_fonts"
-echo -en "Install fonts packages? ["$(clrg "Y")"/n]: "
+echo -en "Install fonts packages? [$(clrg "Y")/n]: "
 read ok
 [[ $ok = "" ]] && ok="y"
 if [[ $ok =~ ^(y|Y).*$ ]]; then     
-    sudo paru -S $packages_fonts
+    sudo paru -S "$packages_fonts"
 fi

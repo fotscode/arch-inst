@@ -72,15 +72,18 @@ fi
 
 echo -en "Download gdm/lightdm [$(clrg "0")/1]: "
 read ok
+gdm_installed=0
 [[ $ok = "" ]] && ok="0"
 if [[ $ok =~ ^0$ ]]; then     
     sudo pacman -S gdm
     systemctl enable gdm
-    echo "$(clrr "WARNING:") edit /etc/gdm/custom.conf and uncomment \"WaylandEnable=false\" if using x11"
+    gdm_installed=1
 else 
     sudo pacman -S lightdm lightdm-gtk-greeter
     systemctl enable lightdm
 fi
+
+[[ $paru -eq 0 ]] && echo "$(clrr "WARNING:") paru not downloaded, skipping" && exit 0
 
 echo -en "Download brave/google-chrome/firefox [$(clrg "0")/1/2]: "
 read ok
@@ -117,6 +120,7 @@ read ok
 [[ $ok = "" ]] && ok="0"
 if [[ $ok =~ ^0$ ]]; then     
     paru -S neovim
+    xdg-mime default nvim.desktop text/plain
 elif [[ $ok =~ ^1$ ]]; then
     paru -S visual-studio-code-bin
 fi
@@ -126,8 +130,10 @@ read ok
 [[ $ok = "" ]] && ok="0"
 if [[ $ok =~ ^0$ ]]; then     
     paru -S sioyek
+    xdg-mime default sioyek.desktop application/pdf
 elif [[ $ok =~ ^1$ ]]; then
     paru -S zathura
+    xdg-mime default zathura.desktop application/pdf
 fi
 
 echo -en "Download discord/teams/zoom [$(clrg "0")/1/2]: "
@@ -144,10 +150,18 @@ fi
 echo -en "Download mpv/vlc [$(clrg "0")/1]: "
 read ok
 [[ $ok = "" ]] && ok="0"
+video="mpv"
 if [[ $ok =~ ^0$ ]]; then     
     paru -S mpv
 elif [[ $ok =~ ^1$ ]]; then
     paru -S vlc
-fi
+    video="vlc"
 
-echo "$(clrr "WARNING:") execute visudo and uncomment \"%wheel ALL=(ALL:ALL) ALL\" almost at the end of the file"
+fi
+xdg-mime default $video.desktop video/mp4
+xdg-mime default $video.desktop video/x-matroska
+xdg-mime default $video.desktop video/webm
+xdg-mime default $video.desktop audio/mpeg
+
+[[ $gdm_installed -eq 1 ]] && echo "$(clrr "WARNING:") edit /etc/gdm/custom.conf and uncomment \"WaylandEnable=false\" if using x11 (i3)"
+

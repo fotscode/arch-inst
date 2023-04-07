@@ -7,6 +7,7 @@ link .xprofile
 link .zshrc
 create $HOME/.local/bin folder
 link scripts to $HOME/.local/bin
+link .xbindkeysrc
 rofi themes script
 
 --------------------------------------
@@ -121,3 +122,19 @@ to check your efi boot uuid:
 sudo fdisk -l
 find type EFI System
 sudo blkid /dev/sdXn
+
+--------------------------------------
+
+powermenu
+tickear los wake up calls (para que le suspend funcione)
+
+--------------------------------------
+
+postgresql
+
+sudo -iu postgres
+initdb -D /var/lib/postgres/data
+creacion usuario:
+https://medium.com/coding-blocks/creating-user-database-and-adding-access-on-postgresql-8bfcd2f4a91e
+permisos usuario:
+https://stackoverflow.com/questions/74110708/postgres-15-permission-denied-for-schema-public

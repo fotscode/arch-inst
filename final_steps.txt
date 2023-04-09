@@ -5,10 +5,11 @@ git clone configs and important folders
 
 link .xprofile
 link .zshrc
-create $HOME/.local/bin folder
 link scripts to $HOME/.local/bin
 link .xbindkeysrc
+link .Xresources
 rofi themes script
+sioyek script
 
 --------------------------------------
 
@@ -26,11 +27,6 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa.pub
 add content to github profile settings
-
---------------------------------------
-
-i3lock-fancy-dualmonitors-git
-xdpyinfo
 
 --------------------------------------
 
@@ -108,10 +104,15 @@ sudo virsh net-start default
 
 set fstab for mounting extra drives
 
+sudo fdisk -l
+sudo blkid /dev/sdXn
+sudo vim /etc/fstab
+UUID=CHANGE-ME-IM-A-UUID /mnt/CHANGE-ME-IM-A-MOUNTPOINT FILESYSTEM-OF-DEVICE defaults 0 2
+
 --------------------------------------
 
 if you want to add grub entrys
-edit /etc/grub.d/40_custom and add:
+edit /etc/grub.d/40_custom and add (example for windows 10)):
 menuentry "Windows 10" --class windows --class os {
     insmod ntfs
     search --no-floppy --set=root --fs-uuid CHANGE-ME-IM-A-EFI-BOOT-UUID
@@ -126,7 +127,7 @@ sudo blkid /dev/sdXn
 --------------------------------------
 
 powermenu
-tickear los wake up calls (para que le suspend funcione)
+disable wake up calls (so systemctl suspend works properly)
 
 --------------------------------------
 
@@ -134,7 +135,7 @@ postgresql
 
 sudo -iu postgres
 initdb -D /var/lib/postgres/data
-creacion usuario:
+create user:
 https://medium.com/coding-blocks/creating-user-database-and-adding-access-on-postgresql-8bfcd2f4a91e
-permisos usuario:
+permissions user:
 https://stackoverflow.com/questions/74110708/postgres-15-permission-denied-for-schema-public

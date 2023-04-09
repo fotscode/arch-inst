@@ -16,8 +16,12 @@ err(){
 }
 echo "Defaults in green"
 
+# create .config folder if it doesn't exist
+if [ ! -d ~/.config ]; then
+    mkdir ~/.config
+fi
 
-packages_useful="rofi playerctl xbindkeys xvkbd nitrogen flameshot alsa-utils btop neofetch xorg-xset tree perl-image-exiftool pavucontrol onboard redshift sleek xorg-xcursorgen ripgrep dunst fzf fd bat xdotool xorg-xwininfo exa pamixer unzip unrar man-db lxappearance xclip wmctrl gdu bc"
+packages_useful="rofi playerctl xbindkeys xvkbd nitrogen flameshot alsa-utils btop neofetch xorg-xset tree perl-image-exiftool pavucontrol onboard redshift sleek xorg-xcursorgen ripgrep dunst fzf fd bat xdotool xorg-xwininfo exa pamixer unzip unrar man-db lxappearance xclip wmctrl gdu bc polkit-gnome colordiff"
 packages_media="spotify-launcher thunderbird stremio noisetorch gimp qbittorrent sxiv rnote yt-dlp inkscape libreoffice-fresh"
 packages_flashing="balena-etcher woeusb"
 packages_development="jdk-openjdk android-studio npm nodejs libwnck3 python-pip"

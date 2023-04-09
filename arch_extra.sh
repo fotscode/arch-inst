@@ -16,6 +16,11 @@ err(){
 }
 echo "Defaults in green"
 
+# create .config folder if it doesn't exist
+if [ ! -d ~/.config ]; then
+    mkdir ~/.config
+fi
+
 echo -en "Username [leave empty if non existing]: "
 read ok
 user_created=1

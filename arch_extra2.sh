@@ -21,8 +21,8 @@ if [ ! -d ~/.config ]; then
     mkdir ~/.config
 fi
 
-packages_useful="rofi playerctl xbindkeys xvkbd nitrogen flameshot alsa-utils btop neofetch xorg-xset tree perl-image-exiftool pavucontrol onboard redshift sleek xorg-xcursorgen ripgrep dunst fzf fd bat xdotool xorg-xwininfo exa pamixer unzip unrar man-db lxappearance xclip wmctrl gdu bc polkit-gnome colordiff"
-packages_media="spotify-launcher thunderbird stremio noisetorch gimp qbittorrent sxiv rnote yt-dlp inkscape libreoffice-fresh"
+packages_useful="rofi playerctl xbindkeys xvkbd nitrogen flameshot alsa-utils btop neofetch xorg-xset tree perl-image-exiftool pavucontrol onboard redshift sleek xorg-xcursorgen ripgrep dunst fzf fd bat xdotool xorg-xwininfo exa pamixer unzip unrar man-db lxappearance xclip wmctrl gdu bc polkit-gnome colordiff picom"
+packages_media="spotify-launcher thunderbird stremio noisetorch gimp qbittorrent sxiv rnote yt-dlp inkscape libreoffice-fresh peek"
 packages_flashing="balena-etcher woeusb"
 packages_development="jdk-openjdk android-studio npm nodejs libwnck3 python-pip"
 packages_fonts="ttf-roboto siji-git ttf-sourcecodepro-nerd ttf-iosevka-nerd ttf-hack-nerd ttf-font-awesome ttf-font-awesome-4 noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra"

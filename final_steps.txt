@@ -85,7 +85,7 @@ example: volantes-cursors
 --------------------------------------
 
 setup gdrive
-https://github.com/BugCode1/gdrive/releases/tag/2.1.2
+https://github.com/glotlabs/gdrive
 
 --------------------------------------
 

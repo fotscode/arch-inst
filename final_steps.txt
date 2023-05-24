@@ -37,7 +37,7 @@ npm install -g nativefier
 
 install google calendar with nativefier:
 
-nativefier https://calendar.google.com/ --user-agent 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0' --name "Google Calendar" --internal-urls ".*accounts.google.com.*" --inject dark_mode.css --darwin-dark-mode-support $HOME/.local/share/
+nativefier https://calendar.google.com/ --user-agent 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0' --name "Google Calendar" --internal-urls ".*accounts.google.com.*" --inject dark_mode.css --darwin-dark-mode-support $HOME/.local/share/ --honest
 
 dark_mode.css:
 @media (prefers-color-scheme: dark) {
@@ -60,6 +60,8 @@ Terminal=false
 Exec=$HOME/.local/share/GoogleCalendar-linux-x64/GoogleCalendar
 Name=Google Calendar
 Icon=$HOME/.local/share/GoogleCalendar-linux-x64/calendar_1_2x.png <--- change this to your path
+
+change package.json name to Google Calendar
 
 --------------------------------------
 
@@ -139,3 +141,17 @@ create user:
 https://medium.com/coding-blocks/creating-user-database-and-adding-access-on-postgresql-8bfcd2f4a91e
 permissions user:
 https://stackoverflow.com/questions/74110708/postgres-15-permission-denied-for-schema-public
+
+--------------------------------------
+Mouse Accell
+
+File: /etc/X11/xorg.conf.d/99-libinput-custom-config.conf
+
+Section "InputClass"
+  Identifier "logitech mouse acceleration"
+  MatchDriver "libinput"
+  MatchProduct "Logitech USB Receiver"
+  Option "AccelSpeed" "-0.5"
+EndSection
+
+

@@ -17,6 +17,7 @@ git configs:
 
 git config --global user.name "CHANGEME"
 git config --global user.email "CHANGEME@CHANGEME.com"
+git config --global init.defaultBranch main
 
 --------------------------------------
 

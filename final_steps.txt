@@ -3,6 +3,20 @@ git clone configs and important folders
 
 --------------------------------------
 
+cronie
+sudo crontab -e
+systemctl enable cronie
+systemctl start cronie
+```
+@daily /home/fots/.config/scripts/backup.sh
+```
+
+--------------------------------------
+onboard
+if fails: change keyboard => input options => input event source => gtk
+
+--------------------------------------
+
 link .xprofile
 link .zshrc
 link scripts to $HOME/.local/bin
@@ -81,9 +95,11 @@ steam inventory helper
 
 gtk-themes:
 
-example: white-sur theme
-example: reversal-dark icons
-example: volantes-cursors
+example: white-sur theme (https://github.com/vinceliuice/WhiteSur-gtk-theme)
+example: reversal-dark icons (https://github.com/yeyushengfan258/Reversal-icon-theme)
+example: volantes-cursors (https://github.com/varlesh/volantes-cursors)
+    - if fails: DBUS_SESSION_BUS_ADDRESS="" make
+lxappearence
 
 --------------------------------------
 
@@ -93,6 +109,7 @@ https://github.com/glotlabs/gdrive
 --------------------------------------
 
 set copilot in neovim
+install formatters (astyle, prettier, stylua, shellcheck, etc)
 
 --------------------------------------
 
@@ -101,6 +118,8 @@ sudo pacman -S qemu-full virt-manager bridge-utils
 sudo usermod -aG libvirt USUARIO
 sudo usermod -aG kvm USUARIO
 sudo pacman -S dnsmasq
+systemctl enable libvirtd
+systemctl start libvirtd
 sudo virsh net-start default
 
 --------------------------------------
@@ -129,7 +148,7 @@ sudo blkid /dev/sdXn
 
 --------------------------------------
 
-powermenu
+powertop
 disable wake up calls (so systemctl suspend works properly)
 
 --------------------------------------
@@ -155,4 +174,10 @@ Section "InputClass"
   Option "AccelSpeed" "-0.5"
 EndSection
 
+--------------------------------------
+
+VPN
+package: wireguard-tools, systemd-resolved
+systemctl start systemd-resolved.service 
+systemctl enable systemd-resolved.service
 

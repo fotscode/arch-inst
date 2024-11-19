@@ -151,6 +151,50 @@ sudo blkid /dev/sdXn
 powertop
 disable wake up calls (so systemctl suspend works properly)
 
+in case that when reboots, the changes are lost:
+create a service inside 
+
+/etc/systemd/system/rc-local.service, content:
+```
+[Unit]
+Description=/etc/rc.local Compatibility
+ConditionPathExists=/etc/rc.local
+
+[Service]
+Type=forking
+ExecStart=/etc/rc.local start
+TimeoutSec=0
+StandardOutput=tty
+RemainAfterExit=yes
+SysVStartPriority=99
+
+[Install]
+WantedBy=multi-user.target
+```
+
+/etc/rc.local, content:
+```sh
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+find /sys/bus/usb/devices | xargs -I {} sh -c "echo {}/power/wakeup; cat {}/power/wakeup" 2> /dev/null | grep enabled -B 1 | grep sys | xargs -I {} sh -c "echo 'disabled' > {}"
+```
+
+then `sudo chmod +x /etc/rc.local`
+and `systemctl enable rc-local`
+
+to verify that it works, you can `systemctl start rc-local`, then re check the wake up calls with `powertop`
+
 --------------------------------------
 
 postgresql
